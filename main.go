@@ -16,6 +16,6 @@ func main() {
 	routes.BankRoutes(r)
 
 	http.Handle("/", r)
-	log.Fatal((http.ListenAndServe(":8080", r)))
 	fmt.Println("Server Running at localhost:8080")
+	log.Fatal((http.ListenAndServe(":8080", r)))
 }

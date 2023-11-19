@@ -81,3 +81,10 @@ func DeleteUser(userID int64) *User {
 
 	return &deletedUser
 }
+
+func (u *User)UpdateUserBYid()  {
+	 _, err := db.Exec("UPDATE users SET name=?, age=?, phone=?, balance=? WHERE id=?", u.Name, u.Age, u.Phone, u.Balance, u.ID)
+    if err != nil {
+        panic(err.Error())
+    }
+}

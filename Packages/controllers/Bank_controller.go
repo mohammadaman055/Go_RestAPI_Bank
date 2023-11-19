@@ -7,7 +7,6 @@ import (
 	"github/mohammadaman055/Go_RestAPI_Bank/Packages/utils"
 	"net/http"
 	"strconv"
-
 	"github.com/gorilla/mux"
 )
 
@@ -57,4 +56,23 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(result)
+}
+
+func UpdateUserBYid(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	userid := vars["userid"]
+
+	ID, err := strconv.ParseInt(userid,0,0)
+	if err != nil {
+		fmt.Println("error on parsing ID")
+	}
+
+	updateUser := &modules.User{}
+	utils.ParseData(r, updateUser)
+
+	updateUser.ID = int(ID)
+	updateUser.UpdateUserBYid()
+
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("User updated successfully"))
 }
