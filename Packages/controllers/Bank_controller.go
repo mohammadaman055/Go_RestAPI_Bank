@@ -1,78 +1,78 @@
 package controllers
 
-import (
-	"encoding/json"
-	"fmt"
-	"github/mohammadaman055/Go_RestAPI_Bank/Packages/modules"
-	"github/mohammadaman055/Go_RestAPI_Bank/Packages/utils"
-	"net/http"
-	"strconv"
-	"github.com/gorilla/mux"
-)
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"github/mohammadaman055/Go_RestAPI_Bank/Packages/modules"
+// 	"github/mohammadaman055/Go_RestAPI_Bank/Packages/utils"
+// 	"net/http"
+// 	"strconv"
 
-var NewUser modules.User
+// 	"github.com/gorilla/mux"
+// )
 
-func GetUsers(w http.ResponseWriter, r *http.Request) {
-	newusers := modules.GetUsers()
-	result, _ := json.Marshal(newusers)
-	w.Header().Set("Content-TYpe", "application/json")
-	w.WriteHeader((http.StatusOK))
-	w.Write(result)
-}
+// var NewUser modules.Users
 
-func GetUserBYid(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	userid := vars["userid"]
-	ID, err := strconv.ParseInt(userid, 0, 0)
-	if err != nil {
-		fmt.Println("error on parsing")
-	}
-	userdetail := modules.GetUserBYid(ID)
-	result, _ := json.Marshal(userdetail)
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write(result)
-}
+// func GetUsers(w http.ResponseWriter, r *http.Request) {
+// 	newusers := modules.GetUsers()
+// 	result, _ := json.Marshal(newusers)
+// 	w.Header().Set("Content-TYpe", "application/json")
+// 	w.WriteHeader((http.StatusOK))
+// 	w.Write(result)
+// }
 
-func NewUsers(w http.ResponseWriter, r *http.Request) {
-	CreateUser := &modules.User{}
-	utils.ParseData(r, CreateUser)
-	fmt.Printf("Parsed data: %+v\n", CreateUser)
-	u := CreateUser.NewUsers()
-	result, _ := json.Marshal(u)
-	w.WriteHeader(http.StatusOK)
-	w.Write(result)
-}
+// func GetUserBYid(w http.ResponseWriter, r *http.Request) {
+// 	vars := mux.Vars(r)
+// 	userid := vars["userid"]
+// 	ID, err := strconv.ParseInt(userid, 0, 0)
+// 	if err != nil {
+// 		fmt.Println("error on parsing")
+// 	}
+// 	userdetail := modules.GetUserBYid(ID)
+// 	result, _ := json.Marshal(userdetail)
+// 	w.Header().Set("Content-Type", "application/json")
+// 	w.WriteHeader(http.StatusOK)
+// 	w.Write(result)
+// }
 
-func DeleteUser(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	userid := vars["userid"]
-	ID, err := strconv.ParseInt(userid, 0, 0)
-	if err != nil {
-		fmt.Println("error on parsing")
-	}
-	deleteuserdetail := modules.DeleteUser(ID)
-	result, _ := json.Marshal(deleteuserdetail)
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	w.Write(result)
-}
+// func NewUsers(w http.ResponseWriter, r *http.Request) {
+// 	CreateUser := &modules.Users{}
+// 	utils.ParseData(r, CreateUser)
+// 	fmt.Printf("Parsed data: %+v\n", CreateUser)
+// 	u := CreateUser.NewUsers()
+// 	result, _ := json.Marshal(u)
+// 	w.WriteHeader(http.StatusOK)
+// 	w.Write(result)
+// }
 
-func UpdateUserBYid(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
-	userid := vars["userid"]
+// func DeleteUser(w http.ResponseWriter, r *http.Request) {
+// 	vars := mux.Vars(r)
+// 	userid := vars["userid"]
+// 	ID, err := strconv.ParseInt(userid, 0, 0)
+// 	if err != nil {
+// 		fmt.Println("error on parsing")
+// 	}
+// 	modules.DeleteUser(ID)
 
-	ID, err := strconv.ParseInt(userid,0,0)
-	if err != nil {
-		fmt.Println("error on parsing ID")
-	}
+// 	w.WriteHeader(http.StatusOK)
+// 	w.Write([]byte("User deleted successfully"))
+// }
 
-	updateUser := &modules.User{}
-	utils.ParseData(r, updateUser)
+// func UpdateUserBYid(w http.ResponseWriter, r *http.Request) {
+// 	vars := mux.Vars(r)
+// 	userid := vars["userid"]
 
-	updateUser.ID = int(ID)
-	updateUser.UpdateUserBYid()
+// 	ID, err := strconv.ParseInt(userid, 0, 0)
+// 	if err != nil {
+// 		fmt.Println("error on parsing ID")
+// 	}
 
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte("User updated successfully"))
-}
+// 	updateUser := &modules.Users{}
+// 	utils.ParseData(r, updateUser)
+
+// 	updateUser.UsersID = int(ID)
+// 	updateUser.UpdateUserBYid()
+
+// 	w.WriteHeader(http.StatusOK)
+// 	w.Write([]byte("User updated successfully"))
+// }
