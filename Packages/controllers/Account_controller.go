@@ -14,7 +14,7 @@ import (
 func GetAllAccount(w http.ResponseWriter, r *http.Request) {
 	newuaccount := modules.GetAllAccount()
 	result, _ := json.Marshal(newuaccount)
-	w.Header().Set("Content-TYpe", "application/json")
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader((http.StatusOK))
 	w.Write(result)
 }
