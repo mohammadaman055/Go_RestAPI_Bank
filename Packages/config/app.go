@@ -11,7 +11,7 @@ import (
 var db *sql.DB
 
 func Connect() {
-	d, err := sql.Open("mysql", "root:Aman@2002@tcp(127.0.0.1:3306)/bankapi")
+	d, err := sql.Open("mysql", "root:yourpassword@tcp(127.0.0.1:3306)/bankapi")
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -23,7 +23,3 @@ CREATE TABLE transactions (
     FOREIGN KEY (accountid) REFERENCES accounts(accountid) ON DELETE CASCADE 
 );
 
-CREATE TABLE atms (
-    atm_id INT PRIMARY KEY AUTO_INCREMENT,
-    location_name VARCHAR(100)
-);
